@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development | My Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --primary: #8FA58A;
+      --secondary: #DDE5D8;
+      --text: #222222;
+      --accent: #6B2D45;
+      --paper: #fffdf7;
+      --ink: #221820;
+      --soft: #eef3ea;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(221, 229, 216, 0.8),
+          transparent 38%
+        ),
+        linear-gradient(135deg, #fffdf7, #eef3ea);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      margin: 18px auto 0;
+      width: min(1120px, calc(100% - 34px));
+      padding: 10px 18px;
+      background: rgba(255, 253, 247, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(107, 45, 69, 0.18);
+      border-radius: 999px;
+      box-shadow: 0 18px 40px rgba(34, 24, 32, 0.08);
+    }
+
+    .logo {
+      width: 70px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .nav-link {
+      color: var(--ink);
+      font-size: 12px;
+      margin: 0 6px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .btn-green {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 9px 20px;
+      border: 2px solid var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 5px 5px 0 var(--primary);
+      transition: 0.2s ease;
+    }
+
+    .btn-green:hover {
+      background: var(--primary);
+      color: var(--ink);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .navbar-toggler {
+      border-color: rgba(107, 45, 69, 0.3);
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.15rem rgba(107, 45, 69, 0.15);
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      width: min(1000px, calc(100% - 32px));
+      margin: 30px auto 22px;
+      padding: 24px 28px;
+      background: rgba(255, 253, 247, 0.85);
+      border: 1px solid rgba(107, 45, 69, 0.14);
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(34, 24, 32, 0.06);
+    }
+
+    .page-header h1 {
+      color: var(--accent);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      margin: 0;
+      color: #55474e;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--accent);
+      background: var(--secondary);
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* BENTO GRID */
+    .bento-grid {
+      width: min(1000px, calc(100% - 32px));
+      margin: 0 auto 35px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-rows: 145px;
+      gap: 12px;
+    }
+
+    /* IMAGE CARDS */
+    .bento-item {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--secondary);
+      border: 1px solid rgba(107, 45, 69, 0.1);
+        box-shadow: none;
+    }
+
+    .bento-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.35s ease;
+    }
+
+    .bento-item:hover .bento-image {
+      transform: scale(1.04);
+    }
+
+    /* DESKTOP GRID POSITIONS */
+
+    /* Image 1: Large upper-left card */
+    .item-1 {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    /* Image 2: Upper middle */
+    .item-2 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    /* Image 3: Upper-right */
+    .item-3 {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+    /* Image 4: Middle upper-right area */
+    .item-4 {
+      grid-column: 3 / 5;
+      grid-row: 2 / 3;
+    }
+
+    /* Image 5: Tall left card */
+    .item-5 {
+      grid-column: 1 / 2;
+      grid-row: 3 / 5;
+    }
+
+    /* Image 6: Large middle card */
+    .item-6 {
+      grid-column: 2 / 4;
+      grid-row: 3 / 5;
+    }
+
+    /* Image 7: Tall right card */
+    .item-7 {
+      grid-column: 4 / 5;
+      grid-row: 3 / 5;
+    }
+
+    /* Image 8: Bottom middle-left */
+    .item-8 {
+      grid-column: 2 / 3;
+      grid-row: 5 / 6;
+    }
+
+    /* Image 9: Bottom-right, two columns wide */
+    .item-9 {
+      grid-column: 3 / 5;
+      grid-row: 5 / 6;
+    }
+
+    /* Image 10: Bottom-left, separate from Image 9 */
+    .item-10 {
+      grid-column: 1 / 2;
+      grid-row: 5 / 6;
+    }
+
+/* CONTACT SECTION */
+.contact-section {
+  width: min(1324px, calc(100% - 34px));
+  margin: 35px auto 0;
+  padding: 65px 60px;
+  background: linear-gradient(120deg, #702d49, #3c1c2b);
+  color: white;
+  border-radius: 48px 48px 0 0;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+}
+
+.contact-section .section-label {
+  color: #f5dce7;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.contact-section h3 {
+  color: white;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.contact-section .btn-green {
+  display: inline-block;
+  background: #702d49;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  box-shadow: 6px 6px 0 #9eaf98;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.contact-section .btn-green:hover {
+  transform: translateY(-3px);
+}
+
+/* CONTACT CARD */
+.contact-box {
+  background: #fffdf7;
+  color: #222222;
+  padding: 32px;
+  border-radius: 36px;
+  border: none;
+  box-shadow: none;
+}
+
+.contact-mini {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 14px;
+  padding: 20px 18px;
+  background: #eef3ea;
+  color: #222222;
+  border-radius: 20px;
+  border-left: 6px solid #702d49;
+  overflow-wrap: anywhere;
+}
+
+.contact-mini i {
+  color: #702d49;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* SOCIAL ICONS */
+.contact-box .social {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.contact-box .social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #221820;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.contact-box .social a:hover {
+  color: #702d49;
+  transform: translateY(-2px);
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  width: min(1324px, calc(100% - 34px));
+  margin: 35px auto 0;
+  padding: 65px 60px;
+  background: linear-gradient(120deg, #702d49, #3c1c2b);
+  color: white;
+  border-radius: 46px 46px 0 0;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* FOOTER - SAME WIDTH AS CONTACT SECTION */
+.footer {
+  width: min(1324px, calc(100% - 34px));
+  margin: 0 auto;
+  padding: 22px 16px;
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-section {
+    width: calc(100% - 24px);
+    margin-top: 20px;
+    padding: 35px 20px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .footer {
+    width: calc(100% - 24px);
+    padding: 18px 12px;
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-section {
+    width: calc(100% - 24px);
+    padding: 38px 22px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .contact-section h3 {
+    font-size: 25px;
+  }
+
+  .contact-box {
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .contact-mini {
+    padding: 15px 12px;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .contact-mini i {
+    font-size: 18px;
+  }
+
+  .footer {
+    width: calc(100% - 24px);
+    font-size: 12px;
+  }
+}
+    /* TABLET */
+    @media (max-width: 767px) {
+      .navbar {
+        border-radius: 24px;
+      }
+
+      .page-header {
+        margin-top: 24px;
+        padding: 22px 20px;
+      }
+
+      .bento-grid {
+        width: calc(100% - 24px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 145px;
+        gap: 10px;
+      }
+
+      .item-1 {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+      }
+
+      .item-2 {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .item-3 {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .item-4 {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+      }
+
+      .item-5 {
+        grid-column: 1 / 2;
+        grid-row: 5 / 7;
+      }
+
+      .item-6 {
+        grid-column: 2 / 3;
+        grid-row: 5 / 7;
+      }
+
+      .item-7 {
+        grid-column: 1 / 3;
+        grid-row: 7 / 8;
+      }
+
+      .item-8 {
+        grid-column: 1 / 2;
+        grid-row: 8 / 9;
+      }
+
+      .item-9 {
+        grid-column: 2 / 3;
+        grid-row: 8 / 9;
+      }
+
+      .item-10 {
+        grid-column: 1 / 3;
+        grid-row: 9 / 10;
+      }
+    }
+
+    /* SMALL PHONES */
+    @media (max-width: 400px) {
+      .bento-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: 180px;
+      }
+
+      .item-1,
+      .item-2,
+      .item-3,
+      .item-4,
+      .item-5,
+      .item-6,
+      .item-7,
+      .item-8,
+      .item-9,
+      .item-10 {
+        grid-column: 1;
+        grid-row: auto;
+      }
+
+      .item-6 {
+        height: 220px;
+      }
+
+      .page-header h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="assets/logo.png"
+          alt="My Portfolio Logo"
+          class="logo"
+        >
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index1.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#goals">Goals</a></li>
+                <li class="nav-item"><a class="nav-link" href="index1.html#contact">Get in Touch</a></li>
+        <li class="nav-item"><a class="btn btn-green" href="webdev.html">webdev</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <span class="section-label">My Portfolio</span>
+    <h1>Web Development</h1>
+    <p>
+      Explore my web development journey, creative ideas, skills,
+      goals, and the things I continue to learn as I build for the web.
+    </p>
+  </header>
+
+  <!-- BENTO GALLERY -->
+  <main class="bento-grid">
+
+    <!-- IMAGE 1 -->
+    <article class="bento-item item-1">
+      <img class="bento-image" src="assets/b1.png" alt="">
+    </article>
+
+    <!-- IMAGE 2 -->
+    <article class="bento-item item-2">
+      <img class="bento-image" src="assets/b2.png" alt="">
+    </article>
+
+    <!-- IMAGE 3 -->
+    <article class="bento-item item-3">
+      <img class="bento-image" src="assets/b3.png" alt="">
+    </article>
+
+    <!-- IMAGE 4 -->
+    <article class="bento-item item-4">
+      <img class="bento-image" src="assets/b7.png" alt="">
+    </article>
+
+    <!-- IMAGE 5 -->
+    <article class="bento-item item-5">
+      <img class="bento-image" src="assets/b4.png" alt="">
+    </article>
+
+    <!-- IMAGE 6 -->
+    <article class="bento-item item-6">
+      <img class="bento-image" src="assets/b6.png" alt="">
+    </article>
+
+    <!-- IMAGE 7 -->
+    <article class="bento-item item-7">
+      <img class="bento-image" src="assets/b5.png" alt="">
+    </article>
+
+    <!-- IMAGE 8 -->
+    <article class="bento-item item-8">
+      <img class="bento-image" src="assets/b8.png" alt="">
+    </article>
+
+    <!-- IMAGE 9 -->
+    <article class="bento-item item-9">
+      <img class="bento-image" src="assets/b9.png" alt="">
+    </article>
+
+    <!-- IMAGE 10 -->
+    <article class="bento-item item-10">
+      <img class="bento-image" src="assets/b10.png" alt="">
+    </article>
+
+  </main>
+
+<!-- FOOTER -->
+  <footer class="footer">
+    <section class="contact-section" id="contact">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="section-label">LET'S CONNECT</p>
+        <h3 class="fw-bold">Let's create something amazing</h3>
+
+        <a href="#" class="btn btn-green">Say Hello</a>
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="contact-box">
+          <div class="contact-mini">
+            <i class="bi bi-envelope-fill"></i>
+            <span>belenarlineonate@gmail.com</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-phone-fill"></i>
+            <span>0995 360 9123</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>San Francisco, Sto. Tomas, Batangas</span>
+          </div>
+
+          <div class="social mt-3">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-github"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter-x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
