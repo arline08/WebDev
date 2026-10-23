@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebDev | My Activities</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --primary: #8FA58A;
+      --secondary: #DDE5D8;
+      --text: #222222;
+      --accent: #6B2D45;
+      --paper: #fffdf7;
+      --ink: #221820;
+      --soft: #eef3ea;
+      --line: rgba(107,45,69,0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(107,45,69,0.12), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(143,165,138,0.35), transparent 30%),
+        linear-gradient(135deg, #f8f3ed, var(--secondary));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(107,45,69,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,45,69,0.07) 1px, transparent 1px);
+      background-size: 34px 34px;
+      z-index: -1;
+    }
+
+    /* NAVBAR — matching index.html */
+    .navbar {
+      margin: 18px auto 0;
+      width: min(1120px, calc(100% - 34px));
+      padding: 10px 18px;
+      background: rgba(255,253,247,0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(107,45,69,0.18);
+      border-radius: 999px;
+      box-shadow: 0 18px 40px rgba(34,24,32,0.08);
+    }
+
+    .logo {
+      width: 70px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .nav-link {
+      color: var(--ink);
+      font-size: 12px;
+      margin: 0 6px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .btn-green {
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 9px 20px;
+      border: 2px solid var(--accent);
+      font-weight: 800;
+      box-shadow: 5px 5px 0 var(--primary);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-green:hover {
+      background: #3c1c2b;
+      color: white;
+    }
+
+    /* PAGE CONTENT */
+    .section-card {
+      width: min(1180px, calc(100% - 34px));
+      margin: 30px auto;
+      background: rgba(255,253,247,0.88);
+      border: 1px solid rgba(107,45,69,0.20);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 16px 42px rgba(34,24,32,0.06);
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 28px;
+      bottom: 28px;
+      width: 7px;
+      background: var(--accent);
+      border-radius: 0 20px 20px 0;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .section-title {
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: var(--ink);
+      font-size: clamp(25px, 4vw, 42px);
+      letter-spacing: -1px;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 120px;
+      height: 10px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--accent) 0 10px,
+        transparent 10px 17px
+      );
+      display: block;
+      margin-top: 10px;
+      border-radius: 10px;
+      opacity: 0.75;
+    }
+
+    /* ONE ACTIVITY CARD */
+    .activity-card {
+      height: 100%;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 8px 8px 0 rgba(143,165,138,0.8);
+      transition: transform 0.2s;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .activity-number {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .activity-icon {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      border: 1px solid rgba(107,45,69,0.14);
+      border-radius: 18px;
+      color: var(--accent);
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .activity-card h3 {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .activity-card p {
+      line-height: 1.8;
+      color: #55515a;
+      font-size: 14px;
+    }
+
+    .activity-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 4px 4px 0 var(--primary);
+    }
+
+    .activity-link:hover {
+      background: #3c1c2b;
+      color: white;
+    }
+
+    /* FOOTER — matching index.html */
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      background: #3c1c2b;
+      color: white;
+    }
+
+
+/* CONTACT SECTION */
+.contact-section {
+  width: min(1180px, calc(100% - 34px));
+  margin: 35px auto 0;
+  background: linear-gradient(135deg, var(--accent), #3c1c2b);
+  color: white;
+  border-radius: 42px 42px 0 0;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section .section-label {
+  color: #f5dce7;
+}
+
+.contact-box {
+  background: var(--paper);
+  color: var(--text);
+  padding: 28px;
+  border-radius: 32px;
+  box-shadow: none;
+}
+
+.contact-mini {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 14px;
+  background: var(--soft);
+  padding: 14px;
+  border-radius: 18px;
+  border-left: 5px solid var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.contact-mini i {
+  color: var(--accent);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* SOCIAL LINKS */
+.contact-box .social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.contact-box .social a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 18px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.contact-box .social a:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* FOOTER BAR */
+.footer {
+  background: transparent;
+  color: var(--text);
+  width: 100%;
+  margin: 0;
+  padding: 22px 16px;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 38px 24px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .contact-box {
+    padding: 20px;
+  }
+
+  .contact-mini {
+    font-size: 13px;
+  }
+}
+
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .navbar {
+        border-radius: 24px;
+      }
+
+      .section-card {
+        padding: 26px 22px;
+      }
+    }
+.activity-preview {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: white;
+}
+
+.activity-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow-y: auto;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Palitan ang images/logo.png kung iba ang logo path mo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="Home">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index1.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="index1.html#goals">Goals</a></li>
+                <li class="nav-item"><a class="nav-link" href="index1.html#contact">Get in Touch</a></li>
+        <li class="nav-item"><a class="btn btn-green" href="webdev.html">webdev</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    </div>
+  </nav>
+
+  <!-- ACTIVITIES SECTION -->
+  <main class="section-card">
+
+    <div class="section-label">Web Development</div>
+    <h1 class="section-title">My Activities</h1>
+
+    <p class="mb-4">
+      All my Web Development activities, school works, and projects in one place.
+    </p>
+
+    <div class="row g-4">
+
+      <!-- ACTIVITY 01 ONLY -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="activity-card">
+
+          <span class="activity-number">Activity 01</span>
+
+<div class="activity-preview">
+  <iframe src="gallery.html" title="Gallery Preview"></iframe>
+</div>
+
+          <h3>BENTO LAYOUT</h3>
+
+          <p>
+            A Bento Layout organizes content into clean, modern boxes of different sizes.
+          </p>
+
+          <a href="gallery.html" class="activity-link">
+            Open Activity <i class="bi bi-arrow-up-right"></i>
+          </a>
+
+        </article>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <section class="contact-section" id="contact">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="section-label">LET'S CONNECT</p>
+        <h3 class="fw-bold">Let's create something amazing</h3>
+
+        <a href="#" class="btn btn-green">Say Hello</a>
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="contact-box">
+          <div class="contact-mini">
+            <i class="bi bi-envelope-fill"></i>
+            <span>belenarlineonate@gmail.com</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-phone-fill"></i>
+            <span>0995 360 9123</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>San Francisco, Sto. Tomas, Batangas</span>
+          </div>
+
+          <div class="social mt-3">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-github"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter-x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

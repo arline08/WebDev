@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arline Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --primary: #8FA58A;
+      --secondary: #DDE5D8;
+      --text: #222222;
+      --accent: #6B2D45;
+      --paper: #fffdf7;
+      --ink: #221820;
+      --soft: #eef3ea;
+      --line: rgba(107,45,69,0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(107,45,69,0.12), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(143,165,138,0.35), transparent 30%),
+        linear-gradient(135deg, #f8f3ed, var(--secondary));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(107,45,69,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,45,69,0.07) 1px, transparent 1px);
+      background-size: 34px 34px;
+      z-index: -1;
+    }
+
+    .navbar {
+      margin: 18px auto 0;
+      width: min(1120px, calc(100% - 34px));
+      padding: 10px 18px;
+      background: rgba(255,253,247,0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(107,45,69,0.18);
+      border-radius: 999px;
+      box-shadow: 0 18px 40px rgba(34,24,32,0.08);
+    }
+
+    .logo {
+      width: 70px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .nav-link {
+      color: var(--ink);
+      font-size: 12px;
+      margin: 0 6px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .btn-green {
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 9px 20px;
+      border: 2px solid var(--accent);
+      font-weight: 800;
+      box-shadow: 5px 5px 0 var(--primary);
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 34px));
+      margin: 30px auto;
+      min-height: 600px;
+      position: relative;
+      border: 2px solid var(--accent);
+      border-radius: 38px;
+      background:
+        linear-gradient(120deg, rgba(255,253,247,0.95) 0 58%, rgba(143,165,138,0.35) 58% 100%);
+      box-shadow: 14px 14px 0 rgba(107,45,69,0.12);
+      overflow: hidden;
+      padding: 62px;
+    }
+
+    .hero::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 9px 0;
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 4px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      right: -90px;
+      bottom: -90px;
+      border: 45px solid rgba(107,45,69,0.10);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(60px, 10vw, 145px);
+      line-height: 0.86;
+      letter-spacing: -5px;
+      color: var(--accent);
+      font-weight: 900;
+      margin: 15px 0;
+    }
+
+    .hero h5 {
+      display: inline-block;
+      padding: 10px 15px;
+      background: var(--primary);
+      color: white;
+      border-radius: 0 22px 22px 22px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      max-width: 570px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-img {
+      width: min(350px, 85%);
+      height: 410px;
+      object-fit: cover;
+      border-radius: 170px 170px 24px 24px;
+      border: 10px solid var(--paper);
+      outline: 2px solid var(--accent);
+      box-shadow: -16px 16px 0 var(--primary);
+      position: relative;
+      z-index: 2;
+      filter: contrast(1.03) saturate(0.95);
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-photo-frame::before {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      left: -35px;
+      top: 18px;
+      background: var(--accent);
+      clip-path: circle(50% 0, 100% 35%, 82% 100%, 18% 100%, 0 35%);
+      opacity: 0.15;
+    }
+
+    .social {
+      display: flex;
+      gap: 13px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .social i {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .section-card {
+      width: min(1180px, calc(100% - 34px));
+      margin: 26px auto;
+      background: rgba(255,253,247,0.88);
+      border: 1px solid rgba(107,45,69,0.20);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 16px 42px rgba(34,24,32,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 28px;
+      bottom: 28px;
+      width: 7px;
+      background: var(--accent);
+      border-radius: 0 20px 20px 0;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .section-title {
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: var(--ink);
+      font-size: clamp(25px, 4vw, 42px);
+      letter-spacing: -1px;
+    }
+
+    .section-title::after {
+
+      width: 120px;
+      height: 10px;
+      background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 17px);
+      display: block;
+      margin-top: 10px;
+      border-radius: 10px;
+      opacity: 0.75;
+    }
+
+    .about-img {
+      width: 245px;
+      height: 295px;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 8px solid var(--paper);
+      outline: 2px dashed var(--accent);
+      transform: rotate(-2deg);
+    }
+    .about-image-design {
+  position: relative;
+  display: inline-block;
+  padding: 18px;
+}
+
+.about-image-design::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotate(3deg);
+  opacity: 0.8;
+}
+
+.about-image-design::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  right: -18px;
+  top: -18px;
+  background: var(--soft);
+  border-radius: 28px;
+  z-index: 0;
+}
+
+.about-image-design .about-img {
+  position: relative;
+  z-index: 2;
+}
+
+.small-photo {
+  width: 72px;
+  height: 72px;
+  background: var(--paper);
+  border: 2px solid rgba(107,45,69,0.18);
+  border-radius: 20px;
+  padding: 8px;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 6px 6px 0 rgba(143,165,138,0.35);
+}
+
+.small-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.top-photo {
+  top: -12px;
+  right: -10px;
+}
+
+.bottom-photo {
+  bottom: -10px;
+  left: -8px;
+}
+
+    .mini-info,
+    .contact-mini {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 14px;
+      background: var(--soft);
+      padding: 14px;
+      border-radius: 18px;
+      border-left: 5px solid var(--accent);
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 16px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+
+    .stat-box,
+    .service-card,
+    .process-card,
+    .timeline-item,
+    .project-card,
+    .highlight-box {
+      background: var(--soft);
+      border: 1px solid rgba(107,45,69,0.15);
+      border-radius: 24px;
+      height: 100%;
+      padding: 22px;
+      box-shadow: none;
+      transition: none;
+    }
+
+    .stat-box {
+      position: relative;
+      border-radius: 24px 24px 24px 4px;
+    }
+
+    .stat-box h3 {
+      color: var(--accent) !important;
+      font-size: 42px;
+    }
+
+    .highlight-box {
+      background:
+        linear-gradient(135deg, rgba(143,165,138,0.35), rgba(255,253,247,0.9));
+      border-radius: 12px 34px 12px 34px;
+    }
+
+    .highlight-box i,
+    .service-card i,
+    .stat-box i {
+      color: var(--accent);
+      font-size: 30px;
+    }
+
+    .circle-skill {
+      width: 98px;
+      height: 98px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--accent);
+      background:
+        radial-gradient(circle at center, var(--paper) 55%, transparent 56%),
+        conic-gradient(var(--accent) 0 75%, rgba(107,45,69,0.12) 75%);
+      border-radius: 50%;
+      border: 1px solid rgba(107,45,69,0.20);
+    }
+
+    .project-intro {
+      background: var(--accent);
+      color: white;
+      border-radius: 26px;
+      padding: 24px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-intro::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -45px;
+      top: -65px;
+      background: rgba(255,255,255,0.14);
+      border-radius: 50%;
+    }
+
+    .project-card {
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      border-radius: 24px;
+      box-shadow: 8px 8px 0 rgba(143,165,138,0.8);
+      cursor: pointer;
+    }
+
+    .project-img {
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background: var(--soft);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(107,45,69,0.14);
+    }
+
+    .project-card::after {
+      content: "OPEN CASE FILE";
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      color: white;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(107,45,69,0.10);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      margin: 3px;
+      border: 1px solid rgba(107,45,69,0.15);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      position: relative;
+      margin-top: 25px;
+    }
+
+    .timeline-item {
+      background: var(--paper);
+      border-radius: 28px 8px 28px 8px;
+      text-align: left;
+      border-left: 8px solid var(--primary);
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 0 0 8px rgba(107,45,69,0.10);
+    }
+
+    .process-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      border-radius: 10px 28px 28px 28px;
+      background: var(--paper);
+    }
+
+    .process-num {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: 4px 4px 0 var(--primary);
+    }
+
+    .contact-section {
+      width: min(1180px, calc(100% - 34px));
+      margin: 35px auto 0;
+      background:
+        linear-gradient(135deg, var(--accent), #3c1c2b);
+      color: white;
+      border-radius: 42px 42px 0 0;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section .section-label {
+      color: #f5dce7;
+    }
+
+    .contact-box {
+      background: var(--paper);
+      color: var(--text);
+      padding: 28px;
+      border-radius: 32px;
+      box-shadow: 10px 10px 0 rgba(143,165,138,0.65);
+    }
+
+    .contact-mini i {
+      color: var(--accent);
+      font-size: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      background: #3c1c2b;
+      color: white;
+    }
+
+    .modal-content {
+      border-radius: 30px;
+      border: none;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .modal-header {
+      background: var(--accent);
+      color: white;
+      border-bottom: none;
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: var(--soft);
+      border-radius: 25px;
+      padding: 20px;
+      border: 1px solid rgba(107,45,69,0.15);
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 6px 6px 0 var(--primary);
+      z-index: 999;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        border-radius: 24px;
+      }
+
+      .hero {
+        padding: 52px 25px 35px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-img {
+        margin-top: 30px;
+        height: 310px;
+      }
+
+      .section-card {
+        padding: 26px 22px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-section {
+        padding: 38px 24px;
+      }
+    }
+
+    .education-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:25px;
+}
+
+.education-card{
+    background:var(--paper);
+    border:1px solid rgba(107,45,69,.15);
+    border-radius:28px;
+    padding:24px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.education-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:8px;
+    background:var(--accent);
+}
+
+.education-img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:20px;
+    margin-bottom:18px;
+    padding:10px;
+    background:var(--soft);
+    border-radius:20px;
+    border:1px solid rgba(107,45,69,.12);
+}
+
+.edu-year{
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.education-card h6{
+    margin-bottom:10px;
+    color:var(--accent);
+}
+
+@media(max-width:768px){
+
+    .education-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logo.png" class="logo" alt="Logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Get in Touch</a></li>
+<li class="nav-item">
+  <a class="btn btn-green" href="https://arline08.github.io/webdev.html">WebDev
+  </a>
+</li>      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="row align-items-center position-relative">
+      <div class="col-md-7">
+        <p class="fs-5 mb-1 fw-bold">Hello, I'm</p>
+        <h1>ARLINE</h1>
+        <h5 class="fw-bold mb-4">IT STUDENT • LEARNER • DREAMER</h5>
+
+        <p class="mb-4">
+          I am a BSIT student who enjoys learning web development, design, and programming. I love creating projects that help me improve my skills and knowledge in technology.
+        </p>
+
+        <a href="#projects" class="btn btn-green mb-4">View Work</a>
+
+        <div class="social">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-github"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-twitter-x"></i>
+        </div>
+      </div>
+
+      <div class="col-md-5 text-center position-relative">
+        <div class="hero-photo-frame">
+          <img src="assets/ARLINE.jpg" class="hero-img" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="about">
+    <p class="section-label">ABOUT ME</p>
+    <h5 class="section-title">Who I Am</h5>
+
+    <div class="row align-items-center g-4">
+      <div class="col-md-4">
+        <p>
+         I am Arline, a BSIT student at the Polytechnic University of the Philippines – Santo Tomas. At first I'm not passionate about technology, and things about programming. However, When i became a IT student, I started to continuously learning new skills in web development, design, and programming.
+
+As a student, I enjoy working on academic projects, exploring different technologies, and challenging myself to build useful and creative applications. My goal is to become a skilled IT professional who can create solutions that make a positive impact on people's lives.
+        </p>
+
+      </div>
+
+<div class="col-md-4 text-center">
+  <div class="about-image-design">
+
+    <div class="small-photo top-photo">
+      <img src="assets/arline2.jpg" alt="Small Image">
+    </div>
+
+    <img src="assets/arline1.jpg" class="about-img" alt="About Image">
+
+    <div class="small-photo bottom-photo">
+      <img src="assets/arline3.jpg" alt="Small Image">
+    </div>
+
+  </div>
+</div>
+
+      <div class="col-md-4">
+        <div class="mini-info">
+          <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <p class="mb-0">San Francisco, Sto. Tomas, Batangas</p>
+        </div>
+
+        <div class="mini-info">
+          <div class="info-icon"><i class="bi bi-mortarboard-fill"></i></div>
+          <p class="mb-0">Bachelor of Science in Information Technology</p>
+        </div>
+
+        <div class="mini-info">
+          <div class="info-icon"><i class="bi bi-stars"></i></div>
+          <p class="mb-0">Interested in Web Development, UI/UX Design</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 text-center g-3">
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3 class="fw-bold">2024-Present</h3>
+          <p class="mb-0">BSIT Student</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3 class="fw-bold">2</h3>
+          <p class="mb-0">Years Learning Academic Projects</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3 class="fw-bold">Learning</h3>
+          <p class="mb-0">Figma, PHP, MySQL, Bootstrap, JavaScript, CSS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section-card" id="education">
+  <p class="section-label">EDUCATION</p>
+  <h5 class="section-title">My Academic Journey</h5>
+
+  <div class="education-grid">
+
+    <!-- College -->
+    <div class="education-card">
+      <img src="assets/arline5.jpg" alt="PUP" class="education-img">
+
+      <div class="timeline-dot"></div>
+
+      <h6 class="fw-bold">College</h6>
+      <p class="edu-year">2024 – 2028</p>
+
+      <p class="mb-1">
+        Polytechnic University of the Philippines – Santo Tomas
+      </p>
+
+      <p class="mb-0">
+        Bachelor of Science in Information Technology
+      </p>
+    </div>
+
+    <!-- Senior High -->
+    <div class="education-card">
+      <img src="assets/arline6.jpg" alt="TII" class="education-img">
+
+      <div class="timeline-dot"></div>
+
+      <h6 class="fw-bold">Senior High School</h6>
+      <p class="edu-year">2022 – 2024</p>
+
+      <p class="mb-1">Tanauan Institute Inc.</p>
+
+      <p class="mb-0">STEM Strand</p>
+    </div>
+
+    <!-- Junior High -->
+    <div class="education-card">
+      <img src="assets/arline4.jpg" alt="SPNHS" class="education-img">
+
+      <div class="timeline-dot"></div>
+
+      <h6 class="fw-bold">Junior High School</h6>
+      <p class="edu-year">2018 – 2022</p>
+
+      <p class="mb-0">
+        San Pedro National High School
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <section class="section-card">
+    <p class="section-label">WHAT I DO</p>
+    <h5 class="section-title">Areas of Interest</h5>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="highlight-box">
+          <h5><i class="bi bi-window-sidebar"></i></h5>
+          <h6 class="fw-bold">Web Development</h6>
+          <p class="small mb-0">Interested in building responsive and user-friendly websites using HTML, CSS, Bootstrap, and PHP.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="highlight-box">
+          <h5><i class="bi bi-phone"></i></h5>
+          <h6 class="fw-bold">UI/UX Design</h6>
+          <p class="small mb-0">Creating clean and simple interfaces that provide a better user experience.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="highlight-box">
+          <h5><i class="bi bi-database"></i></h5>
+          <h6 class="fw-bold">Database Management</h6>
+          <p class="small mb-0">Learning how databases store, manage, and organize information efficiently.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="highlight-box">
+          <h5><i class="bi bi-palette"></i></h5>
+          <h6 class="fw-bold">Continuous Learning</h6>
+          <p class="small mb-0">Exploring new technologies and improving my skills through projects and practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <p class="section-label">DESIGN STRENGTHS</p>
+    <h5 class="section-title">How I Build My Projects</h5>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card">
+          <i class=""></i>
+          <h6 class="fw-bold mt-3">Organized Sections</h6>
+          <p class="small mb-0">I arrange content clearly so visitors can understand the page quickly.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-card">
+          <i class=""></i>
+          <h6 class="fw-bold mt-3">Clean Visual Style</h6>
+          <p class="small mb-0">I use simple colors, spacing, and cards to keep the design neat.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-card">
+          <i class=""></i>
+          <h6 class="fw-bold mt-3">Attention to Detail</h6>
+          <p class="small mb-0"> I focus on creating organized layouts, readable content, and user-friendly designs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="skills">
+    <p class="section-label">MY SKILLS</p>
+    <h5 class="section-title">Tools & Skills I Work With</h5>
+
+    <div class="row text-center g-4 mt-3">
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">85%</div>
+        <p class="small fw-bold mt-2">Figma</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">80%</div>
+        <p class="small fw-bold mt-2">HTML</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">80%</div>
+        <p class="small fw-bold mt-2">CSS</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">50%</div>
+        <p class="small fw-bold mt-2">Bootstrap</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">65%</div>
+        <p class="small fw-bold mt-2">JavaScript</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="circle-skill">60%</div>
+        <p class="small fw-bold mt-2">PHP</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="projects">
+    <p class="section-label">FEATURED PROJECTS</p>
+    <h5 class="section-title">Selected Work</h5>
+
+    <div class="project-intro">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h6 class="fw-bold mb-1">Click each project card to view full details.</h6>
+          <p class="small mb-0">Each popup includes the project image, description, tools used, purpose, and tags.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <span class="tag">Interactive</span>
+          <span class="tag">Modal View</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
+          <img src="assets/logo1.png" class="project-img" alt="Serenity Logo">
+          <h6 class="fw-bold">Serenity Logo</h6>
+          <p class="small">A creative branding design project.</p>
+          <span class="tag">Logo</span>
+          <span class="tag">Branding</span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
+          <img src="assets/102.png" class="project-img" alt="Mobile UI Design">
+          <h6 class="fw-bold">Mobile UI Design</h6>
+          <p class="small">A social media style mobile interface.</p>
+          <span class="tag">Figma</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
+          <img src="assets/100.png" class="project-img" alt="Food Website">
+          <h6 class="fw-bold">Food Website</h6>
+          <p class="small">A warm and clean website layout.</p>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <p class="section-label">MY PROCESS</p>
+    <h5 class="section-title">My Learning Process</h5>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="process-card">
+          <div class="process-num">1</div>
+          <div>
+            <h6 class="fw-bold">Learn</h6>
+            <p class="small mb-0">Identify the purpose, users, and needed sections.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="process-card">
+          <div class="process-num">2</div>
+          <div>
+            <h6 class="fw-bold">Design</h6>
+            <p class="small mb-0">Create layout, color palette, and visual direction.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="process-card">
+          <div class="process-num">3</div>
+          <div>
+            <h6 class="fw-bold">Develop</h6>
+            <p class="small mb-0">Build the page using HTML, CSS, Bootstrap, and PHP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="process-card">
+          <div class="process-num">4</div>
+          <div>
+            <h6 class="fw-bold">Improve</h6>
+            <p class="small mb-0">Fix spacing, responsiveness, and user experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="experience">
+    <p class="section-label">EXPERIENCE</p>
+    <h5 class="section-title">My Journey So Far</h5>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h6 class="fw-bold">Academic</h6>
+        <p class="small mb-0">Participated in groupings and individual projects involving website design and development.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h6 class="fw-bold">Web Development Learning</h6>
+        <p class="small mb-0">Practiced building responsive websites using HTML, CSS, and Bootstrap.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h6 class="fw-bold">Database & Programming</h6>
+        <p class="small mb-0">Learned database management and basic backend development using PHP and MySQL.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="goals">
+    <p class="section-label">FUTURE GOALS</p>
+    <h5 class="section-title">What I Want To Achieve</h5>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h5><i class=""></i></h5>
+          <h6 class="fw-bold">Life</h6>
+          <p class="small mb-0">I want to live a fulfilling life and make a positive impact on others.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h5><i class=""></i></h5>
+          <h6 class="fw-bold">Work</h6>
+          <p class="small mb-0">I want to build a successful career in web development and make a positive impact in my field.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h5><i class=""></i></h5>
+          <h6 class="fw-bold">Learning</h6>
+          <p class="small mb-0">I want to continuously learn and improve my skills in web development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="section-label">LET'S CONNECT</p>
+        <h3 class="fw-bold">Let's create something amazing</h3>
+
+        <a href="#" class="btn btn-green">Say Hello</a>
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="contact-box">
+          <div class="contact-mini">
+            <i class="bi bi-envelope-fill"></i>
+            <span>belenarlineonate@gmail.com</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-phone-fill"></i>
+            <span>0995 360 9123</span>
+          </div>
+
+          <div class="contact-mini">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>San Francisco, Sto. Tomas, Batangas</span>
+          </div>
+
+          <div class="social mt-3">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-github"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter-x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="modal fade" id="projectModal1" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Serenity Logo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+              <img src="assets/Component 1.png" class="modal-img" alt="Serenity Logo">
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="fw-bold">Project Information</h5>
+              <p>
+                Serenity Logo is a branding design project focused on creating a calm,
+                clean, and memorable visual identity. The design uses simple shapes,
+                soft balance, and a modern style.
+              </p>
+              <p><strong>Type:</strong> Logo Design</p>
+              <p><strong>Tools Used:</strong> Figma</p>
+              <p><strong>Purpose:</strong> Branding and visual identity</p>
+              <span class="tag">Logo</span>
+              <span class="tag">Brand Identity</span>
+              <span class="tag">Creative Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal2" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Mobile UI Design</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+              <img src="assets/103.png" class="modal-img" alt="Mobile UI Design">
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="fw-bold">Project Information</h5>
+              <p>
+                This mobile UI design is a social media inspired interface.
+                It focuses on clean spacing, readable content, and a simple user flow.
+              </p>
+              <p><strong>Type:</strong> Mobile App Interface</p>
+              <p><strong>Tools Used:</strong> Figma</p>
+              <p><strong>Purpose:</strong> UI/UX practice and mobile layout design</p>
+              <span class="tag">Mobile UI</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Prototype</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal3" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Food Website</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+              <img src="assets/101.png" class="modal-img" alt="Food Website">
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="fw-bold">Project Information</h5>
+              <p>
+                Food Website is a clean and warm website layout designed for food-related
+                products or restaurants. It uses simple sections, attractive visuals,
+                and easy navigation.
+              </p>
+              <p><strong>Type:</strong> Website Layout</p>
+              <p><strong>Tools Used:</strong> HTML, CSS, Javascript</p>
+              <p><strong>Purpose:</strong> Front-end layout practice</p>
+              <span class="tag">Website</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="back-top"><i class="bi bi-arrow-up"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
