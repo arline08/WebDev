@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKPINK Gallery</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #171017;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            color: #ff69b4 !important;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 24px;
+        }
+
+        .page-title {
+            color: #d63384;
+            font-weight: bold;
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .card {
+            border: 3px solid #ff69b4;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .card-body {
+            background-color: #fff0f6;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-title {
+            color: #c21868;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .btn-pink {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 22px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-pink:hover {
+            background-color: #d63384;
+            color: white;
+        }
+
+        /* MEMBER POPUPS */
+        .modal-dialog {
+            max-width: 650px;
+        }
+
+        .modal-content {
+            border: 3px solid #ff69b4;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff0f6;
+        }
+
+        .modal-header {
+            background-color: #171017;
+            color: #ff69b4;
+            padding: 18px;
+        }
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-member-img {
+            width: 100%;
+            max-width: 450px;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+            border: 4px solid #ffb6d5;
+            margin-bottom: 20px;
+        }
+
+        .member-label {
+            color: #c21868;
+            font-weight: bold;
+        }
+
+        .member-info {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        /* SOLO SONGS SECTION */
+        .solo-section {
+            margin-top: 70px;
+            margin-bottom: 55px;
+            padding: 35px 25px;
+            background: linear-gradient(135deg, #fff0f6, #ffd6e8);
+            border: 3px solid #ff69b4;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(194, 24, 104, 0.15);
+        }
+
+        .solo-heading {
+            text-align: center;
+            color: #c21868;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .solo-description {
+            text-align: center;
+            color: #75445b;
+            margin-bottom: 35px;
+        }
+
+        .solo-card {
+            height: 100%;
+            overflow: hidden;
+            background-color: #171017;
+            color: white;
+            border: 2px solid #ff69b4;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .solo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(214, 51, 132, 0.3);
+        }
+
+        .solo-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center;
+            background-color: #33202b;
+        }
+
+        .solo-card-body {
+            padding: 24px 18px;
+            text-align: center;
+        }
+
+        .solo-artist {
+            color: #ff9bc8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .solo-song-title {
+            color: #ffffff;
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .solo-album {
+            color: #e6b7ce;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .solo-tag {
+            display: inline-block;
+            color: #171017;
+            background-color: #ff9bc8;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .solo-button {
+            display: block;
+            width: 100%;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .solo-button:hover {
+            background-color: #ffffff;
+            color: #c21868;
+        }
+
+        .solo-footer-note {
+            text-align: center;
+            color: #75445b;
+            font-size: 13px;
+            margin-top: 25px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: #171017;
+            color: #ff69b4;
+            text-align: center;
+            padding: 20px;
+            margin-top: 45px;
+        }
+
+        @media (max-width: 576px) {
+            .card-img-top {
+                height: 350px;
+            }
+
+            .modal-member-img {
+                height: 300px;
+            }
+
+            .navbar-brand {
+                font-size: 19px;
+            }
+
+            .solo-section {
+                padding: 25px 15px;
+            }
+
+            .solo-heading {
+                font-size: 29px;
+            }
+
+            .solo-cover {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-dark">
+        <div class="container justify-content-center">
+            <a class="navbar-brand" href="#">BLACKPINK GALLERY ♡</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 px-lg-5">
+
+        <!-- PAGE TITLE -->
+        <h1 class="page-title">BLACKPINK Members</h1>
+
+        <p class="text-center mb-5">
+            Discover your favorite BLACKPINK members! ♡
+        </p>
+
+        <!-- MEMBER GALLERY -->
+        <div class="row g-4">
+
+            <!-- JISOO -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="assets/jisoo0.jpg"
+                         class="card-img-top"
+                         alt="Jisoo">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Jisoo</h5>
+                        <p>Kim Jisoo </p>
+
+                        <button class="btn btn-pink"
+                                data-bs-toggle="modal"
+                                data-bs-target="#jisooModal">
+                            View Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JENNIE -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="assets/jennie3.jpg"
+                         class="card-img-top"
+                         alt="Jennie">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Jennie</h5>
+                        <p>Kim Jennie </p>
+
+                        <button class="btn btn-pink"
+                                data-bs-toggle="modal"
+                                data-bs-target="#jennieModal">
+                            View Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROSÉ -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="assets/rose.jpg"
+                         class="card-img-top"
+                         alt="Rosé">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Rosé</h5>
+                        <p>Park Chaeyoung ♡</p>
+
+                        <button class="btn btn-pink"
+                                data-bs-toggle="modal"
+                                data-bs-target="#roseModal">
+                            View Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LISA -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="assets/lisa.png"
+                         class="card-img-top"
+                         alt="Lisa">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Lisa</h5>
+                        <p>Lalisa Manobal </p>
+
+                        <button class="btn btn-pink"
+                                data-bs-toggle="modal"
+                                data-bs-target="#lisaModal">
+                            View Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- JISOO POPUP -->
+        <div class="modal fade" id="jisooModal" tabindex="-1"
+             aria-labelledby="jisooModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="jisooModalLabel">Jisoo ♡</h5>
+                        <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img src="assets/jisoo.jpg"
+                             alt="Jisoo"
+                             class="modal-member-img">
+
+                        <h4>Kim Jisoo</h4>
+                        <p class="member-info"><span class="member-label">Birthday:</span> January 3, 1995</p>
+                        <p class="member-info"><span class="member-label">Nationality:</span> South Korean</p>
+                        <p class="member-info"><span class="member-label">Group:</span> BLACKPINK</p>
+                        <p class="member-info"><span class="member-label">Role:</span> Vocalist</p>
+                        <p class="member-info"><span class="member-label">Fun Fact:</span> Jisoo is also an actress.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- JENNIE POPUP -->
+        <div class="modal fade" id="jennieModal" tabindex="-1"
+             aria-labelledby="jennieModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="jennieModalLabel">Jennie ♡</h5>
+                        <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img src="assets/jennie.jpg"
+                             alt="Jennie"
+                             class="modal-member-img">
+
+                        <h4>Kim Jennie</h4>
+                        <p class="member-info"><span class="member-label">Birthday:</span> January 16, 1996</p>
+                        <p class="member-info"><span class="member-label">Nationality:</span> South Korean</p>
+                        <p class="member-info"><span class="member-label">Group:</span> BLACKPINK</p>
+                        <p class="member-info"><span class="member-label">Role:</span> Rapper and Vocalist</p>
+                        <p class="member-info"><span class="member-label">Fun Fact:</span> Jennie is also a solo artist.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ROSÉ POPUP -->
+        <div class="modal fade" id="roseModal" tabindex="-1"
+             aria-labelledby="roseModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="roseModalLabel">Rosé ♡</h5>
+                        <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img src="assets/rosee.jpg"
+                             alt="Rosé"
+                             class="modal-member-img">
+
+                        <h4>Roseanne Park</h4>
+                        <p class="member-info"><span class="member-label">Birthday:</span> February 11, 1997</p>
+                        <p class="member-info"><span class="member-label">Nationality:</span> Korean-New Zealander</p>
+                        <p class="member-info"><span class="member-label">Group:</span> BLACKPINK</p>
+                        <p class="member-info"><span class="member-label">Role:</span> Vocalist</p>
+                        <p class="member-info"><span class="member-label">Fun Fact:</span> Rosé plays guitar and piano.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- LISA POPUP -->
+        <div class="modal fade" id="lisaModal" tabindex="-1"
+             aria-labelledby="lisaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lisaModalLabel">Lisa ♡</h5>
+                        <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img src="assets/lisaa.jpg"
+                             alt="Lisa"
+                             class="modal-member-img">
+
+                        <h4>Lalisa Manobal</h4>
+                        <p class="member-info"><span class="member-label">Birthday:</span> March 27, 1997</p>
+                        <p class="member-info"><span class="member-label">Nationality:</span> Thai</p>
+                        <p class="member-info"><span class="member-label">Group:</span> BLACKPINK</p>
+                        <p class="member-info"><span class="member-label">Role:</span> Rapper and Dancer</p>
+                        <p class="member-info"><span class="member-label">Fun Fact:</span> Lisa is known for her dancing skills.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================= -->
+        <!-- BLACKPINK SOLO SONGS SECTION -->
+        <!-- ================================= -->
+
+        <section class="solo-section" id="solo-songs">
+
+            <h2 class="solo-heading">BLACKPINK Solo Era ♡</h2>
+
+            <p class="solo-description">
+                Four queens. Four solo hits. One iconic group. 
+                <br>
+                Discover the individual music styles of each BLACKPINK member!
+            </p>
+
+            <div class="row g-4">
+
+                <!-- JISOO: FLOWER -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="solo-card">
+                        <img
+                            src="https://placehold.co/600x600/42152e/ffb6d5?text=JISOO%0AFLOWER"
+                            alt="Jisoo FLOWER cover placeholder"
+                            class="solo-cover">
+
+                        <div class="solo-card-body">
+                            <p class="solo-artist">JISOO</p>
+                            <h3 class="solo-song-title">FLOWER</h3>
+                            <p class="solo-album">Single album: ME · 2023</p>
+                            <span class="solo-tag">DREAMY POP</span>
+
+                            <a
+                                href="https://www.youtube.com/results?search_query=JISOO+FLOWER+Official+Music+Video"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="solo-button">
+                                ▶ Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JENNIE: LIKE JENNIE -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="solo-card">
+                        <img
+                            src="https://placehold.co/600x600/281b33/ffb6d5?text=JENNIE%0Alike+JENNIE"
+                            alt="Jennie like JENNIE cover placeholder"
+                            class="solo-cover">
+
+                        <div class="solo-card-body">
+                            <p class="solo-artist">JENNIE</p>
+                            <h3 class="solo-song-title">like JENNIE</h3>
+                            <p class="solo-album">Album: Ruby · 2025</p>
+                            <span class="solo-tag">BOLD & CONFIDENT</span>
+
+                            <a
+                                href="https://www.youtube.com/watch?v=aS7al94FVbk"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="solo-button">
+                                ▶ Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROSÉ: TOXIC TILL THE END -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="solo-card">
+                        <img
+                            src="https://placehold.co/600x600/45252b/ffd9e8?text=ROSE%0Atoxic+till+the+end"
+                            alt="Rosé toxic till the end cover placeholder"
+                            class="solo-cover">
+
+                        <div class="solo-card-body">
+                            <p class="solo-artist">ROSÉ</p>
+                            <h3 class="solo-song-title">toxic till the end</h3>
+                            <p class="solo-album">Album: rosie · 2024</p>
+                            <span class="solo-tag">EMOTIONAL POP</span>
+
+                            <a
+                                href="https://www.youtube.com/watch?v=eA0lHNZ1KCA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="solo-button">
+                                ▶ Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LISA: MONEY -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="solo-card">
+                        <img
+                            src="https://placehold.co/600x600/302019/ffd9a8?text=LISA%0AMONEY"
+                            alt="Lisa MONEY cover placeholder"
+                            class="solo-cover">
+
+                        <div class="solo-card-body">
+                            <p class="solo-artist">LISA</p>
+                            <h3 class="solo-song-title">MONEY</h3>
+                            <p class="solo-album">Single album: LALISA · 2021</p>
+                            <span class="solo-tag">HIP-HOP</span>
+
+                            <a
+                                href="https://lalisa.lnk.to/MONEY"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="solo-button">
+                                ▶ Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="solo-footer-note">
+                ♡ Click "Listen Now" to explore each member's solo song.
+            </p>
+
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="mb-0">Made with ♡ for BLACKPINK fans</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
