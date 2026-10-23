@@ -3,44 +3,2359 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebDev | Arline's Activities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10090f">
+
+  <title>BLACKPINK | Born Pink Universe</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
+    :root {
+      --pink: #ff4f9a;
+      --hot-pink: #ff1686;
+      --light-pink: #ffb7d7;
+      --black: #10090f;
+      --dark: #191019;
+      --card: #21151f;
+      --muted: #b9a8b4;
+      --white: #fff8fc;
+      --border: rgba(255, 125, 185, 0.19);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
       margin: 0;
-      padding: 60px 20px;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #eef3ea;
-      color: #221820;
+      padding-bottom: 125px;
+      background: var(--black);
+      color: var(--white);
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
     }
-
-    main {
-      max-width: 650px;
-      margin: auto;
-      padding: 40px 24px;
-      border-radius: 24px;
-      background: #fffdf7;
-    }
-
-    h1 { color: #6b2d45; }
 
     a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #6b2d45;
-      color: white;
+      color: inherit;
       text-decoration: none;
-      border-radius: 24px;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .text-pink {
+      color: var(--pink) !important;
+    }
+
+    .section-label {
+      color: var(--pink);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .navbar {
+      background: rgba(16, 9, 15, .91);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar-brand {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand-pink {
+      color: var(--pink);
+    }
+
+    .navbar .nav-link {
+      color: #d9cbd5;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+      color: var(--pink);
+    }
+
+    .navbar-toggler {
+      border-color: var(--border);
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 .2rem rgba(255, 79, 154, .25);
+    }
+
+    .hero {
+      min-height: 690px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 78% 30%, rgba(255, 22, 134, .18), transparent 40%),
+        radial-gradient(ellipse at 10% 90%, rgba(255, 79, 154, .12), transparent 35%),
+        linear-gradient(130deg, #10090f, #20101c 60%, #10090f);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .15;
+      background-image: radial-gradient(#ff8abc 1px, transparent 1px);
+      background-size: 35px 35px;
+      mask-image: linear-gradient(to right, transparent, black);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 70px;
+      padding-bottom: 65px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      margin-bottom: 23px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: rgba(255, 79, 154, .08);
+      color: var(--light-pink);
+      font-size: .72rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(3.2rem, 10vw, 7rem);
+      line-height: .91;
+      letter-spacing: -5px;
+      font-weight: 900;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+      text-shadow: 0 0 45px rgba(255, 22, 134, .2);
+    }
+
+    .hero-description {
+      max-width: 510px;
+      color: #c8b8c3;
+      font-size: .96rem;
+      line-height: 1.9;
+    }
+
+    .btn-pink {
+      background: linear-gradient(135deg, var(--pink), var(--hot-pink));
+      color: white;
+      border: 0;
+      border-radius: 50px;
+      padding: 13px 24px;
+      font-size: .85rem;
+      font-weight: 700;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-pink:hover {
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 22, 134, .24);
+    }
+
+    .btn-outline-pink {
+      border: 1px solid rgba(255, 79, 154, .6);
+      color: var(--light-pink);
+      border-radius: 50px;
+      padding: 12px 22px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .btn-outline-pink:hover {
+      background: rgba(255, 79, 154, .12);
+      border-color: var(--pink);
+      color: white;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-ring {
+      width: min(350px, 80vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 79, 154, .3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 70px rgba(255, 22, 134, .09),
+        inset 0 0 60px rgba(255, 22, 134, .05);
+      animation: ringGlow 4s ease-in-out infinite alternate;
+    }
+
+    .hero-ring-inner {
+      width: 78%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 79, 154, .25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(255, 79, 154, .12), transparent 68%);
+    }
+
+    .hero-logo {
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .hero-logo small {
+      display: block;
+      margin-top: 12px;
+      color: var(--pink);
+      font-size: .7rem;
+      letter-spacing: 7px;
+    }
+
+    @keyframes ringGlow {
+      from {
+        transform: scale(.98);
+        box-shadow: 0 0 35px rgba(255, 22, 134, .06);
+      }
+      to {
+        transform: scale(1.02);
+        box-shadow: 0 0 80px rgba(255, 22, 134, .15);
+      }
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: .9rem;
+    }
+
+    .about-section {
+      background: linear-gradient(180deg, #10090f, #170e16);
+    }
+
+    .about-panel {
+      height: 100%;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at top right, rgba(255, 79, 154, .08), transparent 45%),
+        var(--card);
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 2;
+    }
+
+    .stat-number {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--pink);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: .73rem;
+    }
+
+    .members-section {
+      background: #10090f;
+    }
+
+    .member-card {
+      position: relative;
+      height: 100%;
+      padding: 13px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, #241522, #160e16);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      overflow: hidden;
+    }
+
+    .member-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255, 79, 154, .65);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .22);
+    }
+
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      background: #30202c;
+    }
+
+    .member-name {
+      margin: 16px 0 4px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .member-role {
+      color: var(--pink);
+      font-size: .7rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .member-card .btn {
+      width: 100%;
+      margin-top: 15px;
+      font-size: .78rem;
+    }
+
+    .songs-section {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 79, 154, .09), transparent 50%),
+        #180f18;
+    }
+
+    .song-feature {
+      padding: 35px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(125deg, #281527, #160e16);
+    }
+
+    .song-feature-icon {
+      width: 65px;
+      height: 65px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      color: white;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--pink), #9b1557);
+      box-shadow: 0 10px 35px rgba(255, 22, 134, .18);
+    }
+
+    .modal-content {
+      background: #170f17;
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .modal-header,
+    .modal-footer {
+      border-color: var(--border);
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+
+    .form-control,
+    .form-select {
+      background-color: #241724;
+      color: var(--white);
+      border-color: var(--border);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      background-color: #241724;
+      color: white;
+      border-color: var(--pink);
+      box-shadow: 0 0 0 .2rem rgba(255, 79, 154, .13);
+    }
+
+    .form-control::placeholder {
+      color: #a993a5;
+    }
+
+    .form-select option {
+      background: #241724;
+      color: white;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: #211521;
+      color: #d9cbd5;
+      font-size: .75rem;
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--pink);
+      color: white;
+      border-color: var(--pink);
+    }
+
+    .song-row {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 12px;
+      margin-bottom: 9px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      background: #211521;
+      transition: border-color .2s, background .2s;
+    }
+
+    .song-row:hover,
+    .song-row.playing {
+      border-color: rgba(255, 79, 154, .48);
+      background: #2a1929;
+    }
+
+    .song-cover {
+      width: 51px;
+      height: 51px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #4c1736, #e73585);
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .song-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .song-info h6 {
+      margin: 0 0 4px;
+      font-size: .86rem;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .song-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .song-action {
+      width: 37px;
+      height: 37px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--pink);
+      background: transparent;
+    }
+
+    .song-action:hover {
+      background: rgba(255, 79, 154, .13);
+    }
+
+    /* MINI MUSIC PLAYER */
+
+    .mini-player {
+      position: fixed;
+      z-index: 1035;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 0 10px;
+      background: rgba(17, 10, 17, .96);
+      border-top: 1px solid rgba(255, 79, 154, .32);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, .23);
+    }
+
+    .player-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(170px, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .player-track {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .player-art {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      overflow: hidden;
+      color: white;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, #fa72b3, #6f1247);
+      box-shadow: 0 0 18px rgba(255, 79, 154, .12);
+    }
+
+    .player-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .player-track-info {
+      min-width: 0;
+    }
+
+    .player-track-info h6 {
+      margin: 0 0 4px;
+      font-size: .83rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-track-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .7rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-heart {
+      border: 0;
+      background: transparent;
+      color: #a995a5;
+      padding: 5px;
+      font-size: 1.05rem;
+    }
+
+    .player-heart.active {
+      color: var(--pink);
+    }
+
+    .player-center {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 8px;
+    }
+
+    .control-btn {
+      display: grid;
+      place-items: center;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      background: transparent;
+      color: #e5d6e1;
+      font-size: 1rem;
+    }
+
+    .control-btn:hover,
+    .control-btn.active {
+      color: var(--pink);
+    }
+
+    .play-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: white;
+      font-size: 1.15rem;
+      box-shadow: 0 0 20px rgba(255, 79, 154, .18);
+    }
+
+    .play-btn:hover {
+      background: var(--hot-pink);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .player-progress {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .time-label {
+      min-width: 31px;
+      color: #ad9ba9;
+      font-size: .63rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress-range {
+      --range-progress: 0%;
+      width: 100%;
+      height: 5px;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 10px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        var(--pink) 0%,
+        var(--pink) var(--range-progress),
+        #483343 var(--range-progress),
+        #483343 100%
+      );
+    }
+
+    .progress-range::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--pink);
+    }
+
+    .progress-range::-moz-range-thumb {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--pink);
+    }
+
+    .player-extra {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      max-width: 150px;
+    }
+
+    .volume-control i {
+      color: #d9cbd5;
+    }
+
+    .volume-range {
+      width: 75px;
+      accent-color: var(--pink);
+      cursor: pointer;
+    }
+
+    .player-status {
+      display: block;
+      margin-top: 5px;
+      color: #bca7b8;
+      font-size: .65rem;
+      text-align: center;
+    }
+
+    .footer {
+      padding: 35px 0;
+      background: #0b070b;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.8;
+    }
+
+    .footer-socials a {
+      color: var(--muted);
+      margin-left: 14px;
+      font-size: 1.1rem;
+    }
+
+    .footer-socials a:hover {
+      color: var(--pink);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 145px;
+      z-index: 1020;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #281525;
+      color: var(--pink);
+      display: none;
+      place-items: center;
+    }
+
+    .back-to-top.visible {
+      display: grid;
+    }
+
+    .empty-state {
+      padding: 30px 10px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-bottom: 158px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-art {
+        min-height: 280px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .song-feature {
+        padding: 24px;
+      }
+
+      .player-inner {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px 12px;
+      }
+
+      .player-track {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .player-center {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .player-extra {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .player-art {
+        width: 43px;
+        height: 43px;
+      }
+
+      .player-track-info h6 {
+        font-size: .76rem;
+      }
+
+      .player-track-info p {
+        font-size: .65rem;
+      }
+
+      .player-controls {
+        gap: 14px;
+        margin-bottom: 5px;
+      }
+
+      .play-btn {
+        width: 34px;
+        height: 34px;
+      }
+
+      .volume-control {
+        display: none;
+      }
+
+      .mini-player {
+        padding: 9px 0 8px;
+      }
+
+      .back-to-top {
+        bottom: 172px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .player-extra {
+        gap: 5px;
+      }
+
+      .player-controls {
+        gap: 9px;
+      }
+
+      .player-track {
+        gap: 8px;
+      }
+
+      .control-btn {
+        width: 27px;
+      }
+
+      .player-heart {
+        font-size: .9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <h1>Web Development</h1>
-    <p>Welcome to my WebDev activities and projects.</p>
-    <a href="/WebDev/activity1/">Gallery — Activity 1</a>
-  </main>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        BLACK<span class="brand-pink">PINK</span><span class="text-pink">.</span>
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#members">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#songs">Music</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button
+              class="btn btn-pink btn-sm"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#songsModal"
+            >
+              <i class="bi bi-music-note-list me-1"></i>
+              Song Library
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="hero-kicker">
+            <i class="bi bi-stars"></i>
+            <span>THE OFFICIAL FAN EXPERIENCE</span>
+          </div>
+
+          <h1>
+            BLACK<br>
+            <span>PINK</span>
+          </h1>
+
+          <p class="hero-description">
+            Four incredible artists. One iconic group.
+            Step into a pink-and-black universe celebrating the music,
+            members, and unforgettable moments of BLACKPINK.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#members" class="btn btn-pink">
+              Meet the Members <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+
+            <button
+              class="btn btn-outline-pink"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#songsModal"
+            >
+              <i class="bi bi-music-note-beamed me-1"></i>
+              Explore Music
+            </button>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-art">
+            <div class="hero-ring">
+              <div class="hero-ring-inner">
+                <div class="hero-logo">
+                  BLACK<br><span class="text-pink">PINK</span>
+                  <small>IN YOUR AREA</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-5">
+          <p class="section-label mb-3">Beyond the music</p>
+          <h2 class="section-title mb-4">
+            Born to be<br><span class="text-pink">iconic.</span>
+          </h2>
+
+          <p class="section-intro">
+            BLACKPINK is a South Korean girl group known for its distinctive
+            sound, powerful performances, and worldwide influence.
+            Discover the four members and explore music from the group
+            and their individual projects.
+          </p>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-panel">
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <div class="song-feature-icon">
+                <i class="bi bi-suit-heart-fill"></i>
+              </div>
+              <div>
+                <h4 class="fw-bold mb-1">BLACKPINK in your area</h4>
+                <p class="mb-0 text-pink small">Four members. One global phenomenon.</p>
+              </div>
+            </div>
+
+            <p>
+              From energetic group anthems to expressive solo releases,
+              BLACKPINK continues to bring its own personality and style
+              to pop music. This fan-made page is a place to celebrate
+              their artistry and discover favorite tracks.
+            </p>
+
+            <div class="row g-3 mt-2">
+              <div class="col-4">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Members</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number">BLINK</div>
+                <div class="stat-label">Fandom</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Love for music</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section class="members-section" id="members">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-label mb-3">Meet the queens</p>
+        <h2 class="section-title">The <span class="text-pink">Members</span></h2>
+        <p class="section-intro mx-auto mt-3">
+          Get to know Jisoo, Jennie, Rosé, and Lisa.
+          Select a member to learn a little more about her.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- JISOO -->
+        <div class="col-6 col-lg-3">
+          <article class="member-card">
+            <img
+              class="member-photo"
+              src="assets/jisoo.jpg"
+              alt="Jisoo"
+              loading="lazy"
+            >
+            <h3 class="member-name">JISOO</h3>
+            <p class="member-role">Vocalist</p>
+            <button
+              class="btn btn-outline-pink"
+              type="button"
+              data-member="jisoo"
+            >
+              View Profile <i class="bi bi-arrow-up-right ms-1"></i>
+            </button>
+          </article>
+        </div>
+
+        <!-- JENNIE -->
+        <div class="col-6 col-lg-3">
+          <article class="member-card">
+            <img
+              class="member-photo"
+              src="assets/jennie.jpg"
+              alt="Jennie"
+              loading="lazy"
+            >
+            <h3 class="member-name">JENNIE</h3>
+            <p class="member-role">Rapper · Vocalist</p>
+            <button
+              class="btn btn-outline-pink"
+              type="button"
+              data-member="jennie"
+            >
+              View Profile <i class="bi bi-arrow-up-right ms-1"></i>
+            </button>
+          </article>
+        </div>
+
+        <!-- ROSÉ -->
+        <div class="col-6 col-lg-3">
+          <article class="member-card">
+            <img
+              class="member-photo"
+              src="assets/rose.jpg"
+              alt="Rosé"
+              loading="lazy"
+            >
+            <h3 class="member-name">ROSÉ</h3>
+            <p class="member-role">Vocalist</p>
+            <button
+              class="btn btn-outline-pink"
+              type="button"
+              data-member="rose"
+            >
+              View Profile <i class="bi bi-arrow-up-right ms-1"></i>
+            </button>
+          </article>
+        </div>
+
+        <!-- LISA -->
+        <div class="col-6 col-lg-3">
+          <article class="member-card">
+            <img
+              class="member-photo"
+              src="assets/lisa.png"
+              alt="Lisa"
+              loading="lazy"
+            >
+            <h3 class="member-name">LISA</h3>
+            <p class="member-role">Rapper · Dancer</p>
+            <button
+              class="btn btn-outline-pink"
+              type="button"
+              data-member="lisa"
+            >
+              View Profile <i class="bi bi-arrow-up-right ms-1"></i>
+            </button>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC LIBRARY INTRO -->
+  <section class="songs-section" id="songs">
+    <div class="container">
+      <div class="song-feature">
+        <div class="row align-items-center g-4">
+          <div class="col-md-auto">
+            <div class="song-feature-icon">
+              <i class="bi bi-vinyl-fill"></i>
+            </div>
+          </div>
+
+          <div class="col">
+            <p class="section-label mb-2">Turn it up</p>
+            <h2 class="h2 fw-bold mb-2">
+              The <span class="text-pink">Song Library</span>
+            </h2>
+            <p class="section-intro mb-0">
+              Explore group tracks and solo releases, search for a favorite,
+              or save songs to your favorites list.
+              Select a playable track to load it into the mini player.
+            </p>
+          </div>
+
+          <div class="col-md-auto">
+            <button
+              class="btn btn-pink"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#songsModal"
+            >
+              <i class="bi bi-music-note-list me-2"></i>
+              Explore All Songs
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-md">
+          <a class="navbar-brand" href="#home">
+            BLACK<span class="brand-pink">PINK</span><span class="text-pink">.</span>
+          </a>
+          <p class="mt-2">
+            A fan-made BLACKPINK experience.<br>
+            Not affiliated with BLACKPINK, YG Entertainment, or their labels.
+          </p>
+        </div>
+
+        <div class="col-md-auto text-md-end">
+          <div class="footer-socials mb-2">
+            <a href="https://www.youtube.com/@BLACKPINK" target="_blank"
+               rel="noopener noreferrer" aria-label="BLACKPINK YouTube">
+              <i class="bi bi-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/blackpinkofficial/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="BLACKPINK Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+          <p>Made with <span class="text-pink">♥</span> for BLINKs.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MEMBER PROFILE MODAL -->
+  <div
+    class="modal fade"
+    id="memberModal"
+    tabindex="-1"
+    aria-labelledby="memberModalTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="memberModalTitle">Member Profile</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row align-items-center g-3">
+            <div class="col-5">
+              <img
+                id="profileImage"
+                src="assets/jisoo.jpg"
+                alt=""
+                class="img-fluid rounded-3"
+              >
+            </div>
+            <div class="col-7">
+              <p class="section-label mb-2" id="profileRole"></p>
+              <h3 class="fw-bold" id="profileName"></h3>
+              <p class="text-secondary small" id="profileDescription"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-pink"
+            data-bs-dismiss="modal"
+          >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SONG LIBRARY MODAL -->
+  <div
+    class="modal fade"
+    id="songsModal"
+    tabindex="-1"
+    aria-labelledby="songsModalTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="section-label mb-1">Your music collection</p>
+            <h5 class="modal-title fw-bold" id="songsModalTitle">
+              BLACK<span class="text-pink">PINK</span> Songs
+            </h5>
+          </div>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <label for="songSearch" class="visually-hidden">Search songs</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text bg-transparent text-pink"
+                  style="border-color: var(--border)">
+              <i class="bi bi-search"></i>
+            </span>
+            <input
+              type="search"
+              id="songSearch"
+              class="form-control"
+              placeholder="Search songs or artists..."
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap mb-4" id="songFilters">
+            <button class="filter-btn active" data-filter="all">All Songs</button>
+            <button class="filter-btn" data-filter="group">BLACKPINK</button>
+            <button class="filter-btn" data-filter="jennie">Jennie</button>
+            <button class="filter-btn" data-filter="jisoo">Jisoo</button>
+            <button class="filter-btn" data-filter="rose">Rosé</button>
+            <button class="filter-btn" data-filter="lisa">Lisa</button>
+            <button class="filter-btn" data-filter="favorites">
+              <i class="bi bi-heart-fill me-1"></i>Favorites
+            </button>
+          </div>
+
+          <div id="songList" aria-live="polite"></div>
+
+          <p class="small mt-3 mb-0" style="color: var(--muted)">
+            <i class="bi bi-info-circle me-1"></i>
+            Songs without an audio file can still be explored, but cannot be
+            played until you add an authorized audio file.
+          </p>
+        </div>
+
+        <div class="modal-footer justify-content-between">
+          <span class="small" style="color: var(--muted)" id="songCount"></span>
+          <button
+            type="button"
+            class="btn btn-outline-pink"
+            data-bs-dismiss="modal"
+          >Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI MUSIC PLAYER -->
+  <div class="mini-player" id="miniPlayer">
+    <div class="container">
+      <div class="player-inner">
+
+        <!-- Current track -->
+        <div class="player-track">
+          <div class="player-art" id="playerArt">
+            <i class="bi bi-disc-fill"></i>
+          </div>
+
+          <div class="player-track-info">
+            <h6 id="playerTitle">Choose a song</h6>
+            <p id="playerArtist">BLACKPINK · Mini Player</p>
+          </div>
+
+          <button
+            class="player-heart"
+            id="playerFavorite"
+            type="button"
+            aria-label="Add current song to favorites"
+            title="Toggle favorite"
+          >
+            <i class="bi bi-heart"></i>
+          </button>
+        </div>
+
+        <!-- Playback controls -->
+        <div class="player-center">
+          <div class="player-controls">
+            <button
+              class="control-btn"
+              id="shuffleBtn"
+              type="button"
+              title="Shuffle"
+              aria-label="Toggle shuffle"
+              aria-pressed="false"
+            >
+              <i class="bi bi-shuffle"></i>
+            </button>
+
+            <button
+              class="control-btn"
+              id="previousBtn"
+              type="button"
+              title="Previous track"
+              aria-label="Previous track"
+            >
+              <i class="bi bi-skip-start-fill"></i>
+            </button>
+
+            <button
+              class="control-btn play-btn"
+              id="playPauseBtn"
+              type="button"
+              aria-label="Play"
+              title="Play or pause"
+            >
+              <i class="bi bi-play-fill"></i>
+            </button>
+
+            <button
+              class="control-btn"
+              id="nextBtn"
+              type="button"
+              title="Next track"
+              aria-label="Next track"
+            >
+              <i class="bi bi-skip-end-fill"></i>
+            </button>
+
+            <button
+              class="control-btn"
+              id="repeatBtn"
+              type="button"
+              title="Repeat off"
+              aria-label="Toggle repeat"
+              aria-pressed="false"
+            >
+              <i class="bi bi-repeat"></i>
+            </button>
+          </div>
+
+          <div class="player-progress">
+            <span class="time-label" id="currentTime">0:00</span>
+            <input
+              type="range"
+              class="progress-range"
+              id="progressBar"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Seek through song"
+            >
+            <span class="time-label" id="duration">0:00</span>
+          </div>
+
+          <span class="player-status" id="playerStatus" role="status">
+            Select a track from the song library
+          </span>
+        </div>
+
+        <!-- Volume -->
+        <div class="player-extra">
+          <div class="volume-control">
+            <i class="bi bi-volume-up-fill" id="volumeIcon"></i>
+            <input
+              type="range"
+              class="volume-range"
+              id="volumeBar"
+              min="0"
+              max="1"
+              value="0.7"
+              step="0.05"
+              aria-label="Volume"
+            >
+          </div>
+
+          <button
+            class="control-btn"
+            type="button"
+            id="openLibraryBtn"
+            title="Open song library"
+            aria-label="Open song library"
+          >
+            <i class="bi bi-music-note-list"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden audio element controlled by JavaScript -->
+  <audio id="audioPlayer" preload="metadata"></audio>
+
+  <!-- Back to top -->
+  <button
+    class="back-to-top"
+    id="backToTop"
+    type="button"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /*
+      MINI PLAYER SETUP
+      -----------------
+      Put audio files that you have permission to use inside:
+      WebDev/activity2/assets/audio/
+
+      Example:
+      assets/audio/sample-track.mp3
+
+      Set the matching song's audio property below.
+      Keep audio: "" if you don't have an authorized audio file.
+    */
+
+    const songs = [
+      {
+        id: 1,
+        title: "DDU-DU DDU-DU",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2018,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 2,
+        title: "Kill This Love",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2019,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 3,
+        title: "How You Like That",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2020,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 4,
+        title: "Lovesick Girls",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2020,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 5,
+        title: "Pink Venom",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2022,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 6,
+        title: "Shut Down",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2022,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 7,
+        title: "Boombayah",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2016,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 8,
+        title: "Whistle",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2016,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 9,
+        title: "Playing with Fire",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2016,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 10,
+        title: "As If It's Your Last",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2017,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 11,
+        title: "Forever Young",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2018,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 12,
+        title: "Pretty Savage",
+        artist: "BLACKPINK",
+        category: "group",
+        year: 2020,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 13,
+        title: "SOLO",
+        artist: "JENNIE",
+        category: "jennie",
+        year: 2018,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 14,
+        title: "You & Me",
+        artist: "JENNIE",
+        category: "jennie",
+        year: 2023,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 15,
+        title: "Mantra",
+        artist: "JENNIE",
+        category: "jennie",
+        year: 2024,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 16,
+        title: "FLOWER",
+        artist: "JISOO",
+        category: "jisoo",
+        year: 2023,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 17,
+        title: "earthquake",
+        artist: "JISOO",
+        category: "jisoo",
+        year: 2025,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 18,
+        title: "On The Ground",
+        artist: "ROSÉ",
+        category: "rose",
+        year: 2021,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 19,
+        title: "Gone",
+        artist: "ROSÉ",
+        category: "rose",
+        year: 2021,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 20,
+        title: "APT.",
+        artist: "ROSÉ & Bruno Mars",
+        category: "rose",
+        year: 2024,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 21,
+        title: "LALISA",
+        artist: "LISA",
+        category: "lisa",
+        year: 2021,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 22,
+        title: "MONEY",
+        artist: "LISA",
+        category: "lisa",
+        year: 2021,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 23,
+        title: "ROCKSTAR",
+        artist: "LISA",
+        category: "lisa",
+        year: 2024,
+        audio: "",
+        cover: ""
+      },
+      {
+        id: 24,
+        title: "New Woman",
+        artist: "LISA feat. Rosalía",
+        category: "lisa",
+        year: 2024,
+        audio: "",
+        cover: ""
+      }
+    ];
+
+    const members = {
+      jisoo: {
+        name: "JISOO",
+        role: "Vocalist · Actress",
+        image: "assets/jisoo.jpg",
+        description:
+          "Jisoo is known for her distinctive vocals, charismatic presence, and work as a performer and actress."
+      },
+      jennie: {
+        name: "JENNIE",
+        role: "Rapper · Vocalist",
+        image: "assets/jennie.jpg",
+        description:
+          "Jennie brings a confident rap style and versatile vocals to BLACKPINK and her solo music."
+      },
+      rose: {
+        name: "ROSÉ",
+        role: "Vocalist · Musician",
+        image: "assets/rose.jpg",
+        description:
+          "Rosé is recognized for her expressive voice and distinctive musical style in group and solo releases."
+      },
+      lisa: {
+        name: "LISA",
+        role: "Rapper · Dancer",
+        image: "assets/lisa.png",
+        description:
+          "Lisa is celebrated for her dynamic dance performances, rap delivery, and solo work."
+      }
+    };
+
+    const audio = document.getElementById("audioPlayer");
+
+    const playerTitle = document.getElementById("playerTitle");
+    const playerArtist = document.getElementById("playerArtist");
+    const playerArt = document.getElementById("playerArt");
+    const playerStatus = document.getElementById("playerStatus");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const previousBtn = document.getElementById("previousBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const repeatBtn = document.getElementById("repeatBtn");
+    const progressBar = document.getElementById("progressBar");
+    const currentTimeLabel = document.getElementById("currentTime");
+    const durationLabel = document.getElementById("duration");
+    const volumeBar = document.getElementById("volumeBar");
+    const volumeIcon = document.getElementById("volumeIcon");
+    const playerFavorite = document.getElementById("playerFavorite");
+    const songList = document.getElementById("songList");
+    const songSearch = document.getElementById("songSearch");
+    const songCount = document.getElementById("songCount");
+
+    let currentSongId = null;
+    let currentFilter = "all";
+    let shuffleEnabled = false;
+    let repeatEnabled = false;
+    let isSeeking = false;
+
+    // Restore saved favorites if browser storage is available.
+    let favorites = new Set();
+
+    try {
+      const savedFavorites = JSON.parse(
+        localStorage.getItem("blinkFavorites") || "[]"
+      );
+
+      if (Array.isArray(savedFavorites)) {
+        favorites = new Set(savedFavorites);
+      }
+    } catch (error) {
+      favorites = new Set();
+    }
+
+    function saveFavorites() {
+      try {
+        localStorage.setItem(
+          "blinkFavorites",
+          JSON.stringify([...favorites])
+        );
+      } catch (error) {
+        // Favorites still work during the current page session.
+      }
+    }
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) {
+        return "0:00";
+      }
+
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+
+      return `${mins}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function getCurrentSong() {
+      return songs.find(song => song.id === currentSongId) || null;
+    }
+
+    function setStatus(message) {
+      playerStatus.textContent = message;
+    }
+
+    function updatePlayButton() {
+      const isPlaying = !audio.paused && !audio.ended;
+
+      playPauseBtn.innerHTML = isPlaying
+        ? '<i class="bi bi-pause-fill"></i>'
+        : '<i class="bi bi-play-fill"></i>';
+
+      playPauseBtn.setAttribute(
+        "aria-label",
+        isPlaying ? "Pause" : "Play"
+      );
+
+      playPauseBtn.title = isPlaying ? "Pause" : "Play";
+    }
+
+    function updateFavoriteButton() {
+      const isFavorite = favorites.has(currentSongId);
+
+      playerFavorite.classList.toggle("active", isFavorite);
+
+      playerFavorite.innerHTML = isFavorite
+        ? '<i class="bi bi-heart-fill"></i>'
+        : '<i class="bi bi-heart"></i>';
+
+      playerFavorite.setAttribute(
+        "aria-label",
+        isFavorite
+          ? "Remove current song from favorites"
+          : "Add current song to favorites"
+      );
+    }
+
+    function updatePlayerArt(song) {
+      playerArt.replaceChildren();
+
+      if (song && song.cover) {
+        const img = document.createElement("img");
+        img.src = song.cover;
+        img.alt = "";
+        img.onerror = () => {
+          playerArt.innerHTML = '<i class="bi bi-disc-fill"></i>';
+        };
+        playerArt.appendChild(img);
+      } else {
+        const icon = document.createElement("i");
+        icon.className = "bi bi-disc-fill";
+        playerArt.appendChild(icon);
+      }
+    }
+
+    function updateSongRows() {
+      document.querySelectorAll(".song-row").forEach(row => {
+        const songId = Number(row.dataset.songId);
+        const isCurrent = songId === currentSongId;
+        const isFavorite = favorites.has(songId);
+        const button = row.querySelector(".song-action");
+
+        row.classList.toggle("playing", isCurrent);
+
+        if (button && button.dataset.action === "favorite") {
+          button.innerHTML = isFavorite
+            ? '<i class="bi bi-heart-fill"></i>'
+            : '<i class="bi bi-heart"></i>';
+
+          button.setAttribute(
+            "aria-label",
+            isFavorite ? "Remove favorite" : "Add favorite"
+          );
+        }
+
+        const playIcon = row.querySelector("[data-role='row-play-icon']");
+
+        if (playIcon) {
+          playIcon.className = isCurrent && !audio.paused
+            ? "bi bi-pause-fill"
+            : "bi bi-play-fill";
+        }
+      });
+    }
+
+    function renderSongs() {
+      const query = songSearch.value.trim().toLowerCase();
+
+      const filteredSongs = songs.filter(song => {
+        const matchesSearch =
+          song.title.toLowerCase().includes(query) ||
+          song.artist.toLowerCase().includes(query);
+
+        const matchesFilter =
+          currentFilter === "all" ||
+          (currentFilter === "favorites" && favorites.has(song.id)) ||
+          song.category === currentFilter;
+
+        return matchesSearch && matchesFilter;
+      });
+
+      songList.replaceChildren();
+
+      songCount.textContent =
+        `${filteredSongs.length} song${filteredSongs.length === 1 ? "" : "s"}`;
+
+      if (filteredSongs.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.innerHTML =
+          '<i class="bi bi-music-note-list fs-2 d-block mb-2"></i>' +
+          "No songs found. Try another search or filter.";
+
+        songList.appendChild(empty);
+        return;
+      }
+
+      filteredSongs.forEach(song => {
+        const row = document.createElement("div");
+        row.className = "song-row";
+        row.dataset.songId = song.id;
+
+        const cover = document.createElement("div");
+        cover.className = "song-cover";
+
+        if (song.cover) {
+          const image = document.createElement("img");
+          image.src = song.cover;
+          image.alt = "";
+          image.loading = "lazy";
+          image.style.width = "100%";
+          image.style.height = "100%";
+          image.style.objectFit = "cover";
+          image.onerror = () => {
+            cover.innerHTML = '<i class="bi bi-disc-fill"></i>';
+          };
+          cover.appendChild(image);
+        } else {
+          cover.innerHTML = '<i class="bi bi-disc-fill"></i>';
+        }
+
+        const info = document.createElement("div");
+        info.className = "song-info";
+
+        const title = document.createElement("h6");
+        title.textContent = song.title;
+
+        const details = document.createElement("p");
+        details.textContent = `${song.artist} · ${song.year}`;
+
+        info.append(title, details);
+
+        const playButton = document.createElement("button");
+        playButton.type = "button";
+        playButton.className = "song-action";
+        playButton.title = song.audio ? "Play song" : "Select song";
+        playButton.setAttribute(
+          "aria-label",
+          `${song.audio ? "Play" : "Select"} ${song.title}`
+        );
+
+        playButton.innerHTML =
+          '<i data-role="row-play-icon" class="bi bi-play-fill"></i>';
+
+        playButton.addEventListener("click", () => {
+          selectSong(song.id, true);
+        });
+
+        const favoriteButton = document.createElement("button");
+        favoriteButton.type = "button";
+        favoriteButton.className = "song-action";
+        favoriteButton.dataset.action = "favorite";
+        favoriteButton.title = "Toggle favorite";
+        favoriteButton.setAttribute(
+          "aria-label",
+          favorites.has(song.id) ? "Remove favorite" : "Add favorite"
+        );
+
+        favoriteButton.innerHTML = favorites.has(song.id)
+          ? '<i class="bi bi-heart-fill"></i>'
+          : '<i class="bi bi-heart"></i>';
+
+        favoriteButton.addEventListener("click", () => {
+          toggleFavorite(song.id);
+        });
+
+        row.append(cover, info, playButton, favoriteButton);
+        songList.appendChild(row);
+      });
+
+      updateSongRows();
+    }
+
+    function selectSong(songId, attemptPlay = false) {
+      const song = songs.find(item => item.id === songId);
+
+      if (!song) return;
+
+      const sameSong = currentSongId === song.id;
+
+      if (sameSong && attemptPlay && song.audio) {
+        if (audio.paused) {
+          playCurrentSong();
+        } else {
+          audio.pause();
+        }
+        return;
+      }
+
+      currentSongId = song.id;
+
+      playerTitle.textContent = song.title;
+      playerArtist.textContent = song.artist;
+      updatePlayerArt(song);
+      updateFavoriteButton();
+
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+
+      progressBar.value = 0;
+      progressBar.style.setProperty("--range-progress", "0%");
+      currentTimeLabel.textContent = "0:00";
+      durationLabel.textContent = "0:00";
+
+      if (!song.audio) {
+        setStatus("Track selected · Add an authorized audio file to play");
+      } else {
+        audio.src = song.audio;
+        audio.load();
+
+        if (attemptPlay) {
+          playCurrentSong();
+        } else {
+          setStatus("Ready to play");
+        }
+      }
+
+      updatePlayButton();
+      updateSongRows();
+    }
+
+    async function playCurrentSong() {
+      const song = getCurrentSong();
+
+      if (!song) {
+        setStatus("Choose a song from the library first");
+        return;
+      }
+
+      if (!song.audio) {
+        setStatus("No audio file added for this track yet");
+        return;
+      }
+
+      try {
+        await audio.play();
+        setStatus("Now playing");
+      } catch (error) {
+        setStatus("Playback failed · Check the audio file path");
+      }
+
+      updatePlayButton();
+      updateSongRows();
+    }
+
+    function toggleFavorite(songId) {
+      if (favorites.has(songId)) {
+        favorites.delete(songId);
+      } else {
+        favorites.add(songId);
+      }
+
+      saveFavorites();
+      updateFavoriteButton();
+      renderSongs();
+    }
+
+    function getPlayableSongs() {
+      return songs.filter(song => Boolean(song.audio));
+    }
+
+    function playAdjacent(direction) {
+      const playable = getPlayableSongs();
+
+      if (playable.length === 0) {
+        setStatus("Add audio files to enable track navigation");
+        return;
+      }
+
+      let index = playable.findIndex(song => song.id === currentSongId);
+
+      if (shuffleEnabled && playable.length > 1) {
+        let nextIndex = index;
+
+        while (nextIndex === index) {
+          nextIndex = Math.floor(Math.random() * playable.length);
+        }
+
+        index = nextIndex;
+      } else {
+        if (index === -1) {
+          index = direction > 0 ? -1 : 0;
+        }
+
+        index = (index + direction + playable.length) % playable.length;
+      }
+
+      selectSong(playable[index].id, true);
+    }
+
+    // Member profiles
+    document.querySelectorAll("[data-member]").forEach(button => {
+      button.addEventListener("click", () => {
+        const member = members[button.dataset.member];
+
+        if (!member) return;
+
+        document.getElementById("memberModalTitle").textContent =
+          member.name + " · Profile";
+
+        document.getElementById("profileName").textContent = member.name;
+        document.getElementById("profileRole").textContent = member.role;
+        document.getElementById("profileDescription").textContent =
+          member.description;
+
+        const profileImage = document.getElementById("profileImage");
+        profileImage.src = member.image;
+        profileImage.alt = member.name;
+
+        bootstrap.Modal.getOrCreateInstance(
+          document.getElementById("memberModal")
+        ).show();
+      });
+    });
+
+    // Song library filters
+    document.querySelectorAll("#songFilters [data-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        currentFilter = button.dataset.filter;
+
+        document.querySelectorAll("#songFilters [data-filter]").forEach(item => {
+          item.classList.toggle("active", item === button);
+        });
+
+        renderSongs();
+      });
+    });
+
+    songSearch.addEventListener("input", renderSongs);
+
+    // Player controls
+    playPauseBtn.addEventListener("click", () => {
+      if (!getCurrentSong()) {
+        const firstPlayable = getPlayableSongs()[0];
+
+        if (!firstPlayable) {
+          setStatus("Choose a song and add an audio file first");
+          return;
+        }
+
+        selectSong(firstPlayable.id, true);
+        return;
+      }
+
+      if (audio.paused) {
+        playCurrentSong();
+      } else {
+        audio.pause();
+      }
+    });
+
+    previousBtn.addEventListener("click", () => playAdjacent(-1));
+    nextBtn.addEventListener("click", () => playAdjacent(1));
+
+    shuffleBtn.addEventListener("click", () => {
+      shuffleEnabled = !shuffleEnabled;
+
+      shuffleBtn.classList.toggle("active", shuffleEnabled);
+      shuffleBtn.setAttribute("aria-pressed", String(shuffleEnabled));
+      setStatus(shuffleEnabled ? "Shuffle enabled" : "Shuffle disabled");
+    });
+
+    repeatBtn.addEventListener("click", () => {
+      repeatEnabled = !repeatEnabled;
+
+      repeatBtn.classList.toggle("active", repeatEnabled);
+      repeatBtn.setAttribute("aria-pressed", String(repeatEnabled));
+      repeatBtn.title = repeatEnabled ? "Repeat on" : "Repeat off";
+
+      setStatus(repeatEnabled ? "Repeat enabled" : "Repeat disabled");
+    });
+
+    playerFavorite.addEventListener("click", () => {
+      if (currentSongId === null) {
+        setStatus("Select a song before adding it to favorites");
+        return;
+      }
+
+      toggleFavorite(currentSongId);
+    });
+
+    document.getElementById("openLibraryBtn").addEventListener("click", () => {
+      bootstrap.Modal.getOrCreateInstance(
+        document.getElementById("songsModal")
+      ).show();
+    });
+
+    // Volume
+    audio.volume = Number(volumeBar.value);
+
+    volumeBar.addEventListener("input", () => {
+      audio.volume = Number(volumeBar.value);
+      updateVolumeIcon();
+    });
+
+    function updateVolumeIcon() {
+      if (audio.muted || audio.volume === 0) {
+        volumeIcon.className = "bi bi-volume-mute-fill";
+      } else if (audio.volume < 0.5) {
+        volumeIcon.className = "bi bi-volume-down-fill";
+      } else {
+        volumeIcon.className = "bi bi-volume-up-fill";
+      }
+    }
+
+    volumeIcon.style.cursor = "pointer";
+    volumeIcon.title = "Mute or unmute";
+
+    volumeIcon.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      updateVolumeIcon();
+    });
+
+    // Audio events
+    audio.addEventListener("loadedmetadata", () => {
+      durationLabel.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      if (isSeeking) return;
+
+      const duration = audio.duration || 0;
+      const current = audio.currentTime || 0;
+      const percentage = duration ? (current / duration) * 100 : 0;
+
+      progressBar.value = percentage;
+      progressBar.style.setProperty(
+        "--range-progress",
+        `${percentage}%`
+      );
+
+      currentTimeLabel.textContent = formatTime(current);
+      durationLabel.textContent = formatTime(duration);
+    });
+
+    progressBar.addEventListener("input", () => {
+      isSeeking = true;
+
+      const percentage = Number(progressBar.value);
+      progressBar.style.setProperty(
+        "--range-progress",
+        `${percentage}%`
+      );
+
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        currentTimeLabel.textContent = formatTime(
+          audio.duration * percentage / 100
+        );
+      }
+    });
+
+    progressBar.addEventListener("change", () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime =
+          audio.duration * Number(progressBar.value) / 100;
+      }
+
+      isSeeking = false;
+    });
+
+    audio.addEventListener("play", () => {
+      updatePlayButton();
+      updateSongRows();
+      setStatus("Now playing");
+    });
+
+    audio.addEventListener("pause", () => {
+      updatePlayButton();
+      updateSongRows();
+    });
+
+    audio.addEventListener("ended", () => {
+      if (repeatEnabled) {
+        audio.currentTime = 0;
+        playCurrentSong();
+      } else {
+        playAdjacent(1);
+      }
+    });
+
+    audio.addEventListener("error", () => {
+      if (getCurrentSong()?.audio) {
+        setStatus("Could not load audio · Check the file path");
+      }
+      updatePlayButton();
+    });
+
+    // Back-to-top button
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("visible", window.scrollY > 400);
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Initial render
+    renderSongs();
+    updatePlayButton();
+    updateFavoriteButton();
+    updateVolumeIcon();
+  </script>
+
 </body>
 </html>
