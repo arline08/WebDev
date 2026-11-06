@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rift Archive | Rick and Morty</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <span class="brand-icon"></span>
+        RICK AND <span>MORTY</span>
+      </a>
+
+
+      <div class="api-status">
+        <span class="status-dot"></span>
+        LIVE API CONNECTED
+      </div>
+    </header>
+
+    <main class="main-content">
+
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">THE INTERDIMENSIONAL ARCHIVE</p>
+
+    <h1>
+      Explore the Rick and Morty Universe
+    </h1>
+
+    <p class="hero-description">
+      Discover characters, locations, and stories
+      from across the multiverse.
+    </p>
+
+        <div class="portal-art" aria-hidden="true">
+          <div class="portal-orbit orbit-one"></div>
+          <div class="portal-orbit orbit-two"></div>
+          <div class="portal-ring">
+            <div class="portal-core"><span>R</span></div>
+          </div>
+          <div class="portal-star star-one">✦</div>
+          <div class="portal-star star-two">✧</div>
+          <div class="portal-star star-three">✦</div>
+          <div class="portal-planet"></div>
+        </div>
+
+        <div class="hero-bottom">
+          <span>DIMENSION C-137</span>
+          <span>EST. MULTIVERSE DATABASE</span>
+        </div>
+      </section>
+
+      <section id="characters" class="collection-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE MULTIVERSE DIRECTORY</p>
+            <h2>Character Collection</h2>
+            <p class="section-subtitle">
+              Find your favorite characters from across the universe.
+            </p>
+          </div>
+
+          <span id="resultCount" class="result-count">LOADING...</span>
+        </div>
+
+        <div class="filter-bar">
+          <div class="search-wrapper">
+            <span class="search-icon">⌕</span>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search for a character..."
+            >
+          </div>
+
+          <select id="statusFilter">
+            <option value="">All Status</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+
+          <select id="speciesFilter">
+            <option value="">All Species</option>
+            <option value="human">Human</option>
+            <option value="alien">Alien</option>
+            <option value="humanoid">Humanoid</option>
+            <option value="robot">Robot</option>
+          </select>
+
+          <button id="searchButton">Search Characters ↗</button>
+        </div>
+
+        <div id="loadingMessage" class="message">
+          Connecting to the multiverse database...
+        </div>
+
+        <div id="characterGrid" class="character-grid"></div>
+
+        <div class="pagination">
+          <button id="prevButton" disabled>← Previous</button>
+          <span id="pageInfo">Page 1</span>
+          <button id="nextButton" disabled>Next →</button>
+        </div>
+      </section>
+      
+<!-- CHARACTER DETAILS VIEW -->
+<section id="characterDetails" class="details-card" hidden>
+  <button type="button" class="back-button" id="backButton">
+    ← Back to Characters
+  </button>
+
+  <div id="detailsLoading" class="message">
+    Loading character information...
+  </div>
+
+  <div id="detailsError" class="message" hidden></div>
+
+  <div id="detailsContent" hidden>
+    <div class="details-image-wrap">
+      <img id="detailImage" src="" alt="">
+    </div>
+
+    <div class="details-content">
+      <p class="eyebrow">INTERDIMENSIONAL RECORD</p>
+      <span id="detailStatus" class="status-badge"></span>
+      <h1 id="detailName"></h1>
+      <p id="detailSpecies" class="details-subtitle"></p>
+
+      <div class="detail-list">
+        <p><strong>Character ID:</strong> <span id="detailId"></span></p>
+        <p><strong>Status:</strong> <span id="detailStatusText"></span></p>
+        <p><strong>Species:</strong> <span id="detailSpeciesText"></span></p>
+        <p><strong>Type:</strong> <span id="detailType"></span></p>
+        <p><strong>Gender:</strong> <span id="detailGender"></span></p>
+        <p><strong>Origin:</strong> <span id="detailOrigin"></span></p>
+        <p><strong>Last Location:</strong> <span id="detailLocation"></span></p>
+        <p><strong>Episodes:</strong> <span id="detailEpisodes"></span></p>
+        <p><strong>Created:</strong> <span id="detailCreated"></span></p>
+      </div>
+
+      <h2 class="episodes-heading">Episode Appearances</h2>
+      <div id="episodeList" class="episode-list"></div>
+    </div>
+  </div>
+</section>
+
+
+      <footer id="about">
+        <span> RICK AND MORTY · FAN-MADE PROJECT</span>
+        <span>POWERED BY RICK AND MORTY API</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
